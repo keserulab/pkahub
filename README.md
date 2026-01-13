@@ -11,11 +11,13 @@ pKahub is hosted at: [pkahub.ttk.hu](http://pkahub.ttk.hu).
 See the [About page](http://pkahub.ttk.hu/about) for information on core purpose and methodology. 
 
 ## Setting up new database
-create conda/mamba environment and install the packages in requirements.txt
+create conda/mamba environment and install the packages in requirements.txt<br>
 then run:
+```
 python manage.py makemigrations
-oython manage.py migrate
+python manage.py migrate
 python manage.py setupdb
+```
 
 ## 💬 Feedback
 
@@ -26,3 +28,4 @@ We welcome community testing and feedback. To share observations about performan
 If you use pKahub in your research, please cite our paper:
 
 To be added
+
