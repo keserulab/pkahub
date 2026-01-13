@@ -1,0 +1,4 @@
+polars
+pyyaml
+rdkit
+Django=5.2

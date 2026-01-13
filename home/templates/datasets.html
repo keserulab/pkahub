@@ -1,0 +1,66 @@
+{% extends "./navbar.html" %}
+{% load static %}
+
+{% block head %}
+{% endblock %}
+
+{% block title %}pKahub - Datasets{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+
+    <div style="text-align: right; margin-bottom: 15px;">
+        <strong>Download all:</strong>
+        <a href="{% static 'home/flatfiles/' %}{{ all_datasets_basename }}.tsv" download>TSV</a> |
+        <a href="{% static 'home/flatfiles/' %}{{ all_datasets_basename }}.json" download>JSON</a> |
+        <a href="{% static 'home/flatfiles/' %}{{ all_datasets_basename }}.smi" download>SMILES</a> |
+        <a href="{% static 'home/flatfiles/' %}{{ all_datasets_basename }}.sdf" download>SDF</a>
+    </div>
+
+    <table class="table" id="browseTable">
+      <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Datapoints</th>
+            <th>Molecules</th>
+            <th>Source</th>
+            <th>Browse</th>
+            <th>Files</th>
+        </tr>
+        
+      </thead>
+      <tbody>
+        {% for dataset, datapoints, molecules in datasets %}
+        <tr>
+          <td>{{ dataset.name }}</td>
+          <td>{{ datapoints }}</a></td>
+          <td>{{ molecules }}</a></td>
+          <td><a href="{{ dataset.source.url }}" target="_blank">{{ dataset.source.name }}</a></td>
+          <td><a href="molecule/browse/{{ dataset.id }}" target="_blank">{{ dataset.name }}</a></td>
+          <td>
+            <a href="{% static 'home/flatfiles/' %}{{ dataset.idname }}.tsv" download>TSV</a> |
+            <a href="{% static 'home/flatfiles/' %}{{ dataset.idname }}.json" download>JSON</a> |
+            <a href="{% static 'home/flatfiles/' %}{{ dataset.idname }}.smi" download>SMILES</a> |
+            <a href="{% static 'home/flatfiles/' %}{{ dataset.idname }}.sdf" download>SDF</a>
+        </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+    <br>
+    
+    </div>
+
+ </div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

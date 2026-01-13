@@ -1,0 +1,170 @@
+{% extends "./navbar.html" %}
+{% load static %}
+
+{% block title %}SH2db - Documentation{% endblock %}
+
+{% block content %}
+<style>
+#browser_compatibility thead tr td, tbody tr td {
+    border-style: solid;
+    border-width: 0.5px;
+    padding: 10px;
+    text-align: center;
+}
+#browser_compatibility span {
+	font-color: green;
+}
+td span {
+	color:green;
+}
+p {
+	text-align: justify;
+}
+</style>
+
+<div class="row">
+	<div class="col-md-12">
+		<div><h4>What is SH2db?</h4></div>
+		<ul>
+			<li>SH2db is a curated structural biology database that contains information on all 120 human SH2 domains. SH2db provides instant access to user-friendly protein sequence/phylogenetic data as well as ready-to-use structural (pymol) files for rapid protein visualization and comparison. </li>
+		</ul>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div><h4>What type of data can be found on the site?</h4></div>
+		<ul>
+			<li>Protein wild type canonical sequences and sequence numbers from <a href="https://uniprot.org" target="_blank">UniProt</a>, structures and publication information from the <a href="https://rcsb.org" target="_blank">Protein Data Bank</a> and AlphaFold models from the <a href="https://alphafold.ebi.ac.uk/" target="_blank">AlphaFold Protein Structure Database</a>.</li>
+		</ul>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div><h4>Generic numbers</h4></div>
+		<ul>
+			<li>What are generic numbers?</li>
+			<p>When comparing the sequences of homologous proteins or species orthologs, residue to residue comparisons can be aided by the use of a numbering system that is generic for the whole protein family. Such a system can help researchers find quick reference points in the proteins instead of just using the protein sequence numbers. By using a structure based alignment for our numbering system, we can make sure that these reference points align not just on the sequence level but also in 3D space. For example, from the sequence alignment of the two closely related SH2 domains, ABL1 and ABL2, we can see that one residue differs in the bC segment. Instead of referencing them as R161 and L207 we can just say that there is a difference between the two sequences in position bCx48. Such a system can help indentify key functional positions and channel the focus of researchers on the similarities and differences between these homologous proteins.</p>
+			<li>How were generic numbers assigned to SH2 domains?</li>
+			<p>Following the guidelines of the <a href="https://doi.org/10.1016/S1043-9471(05)80049-7" target="_blank">Ballesteros-Weinstein</a> and subsequent <a href="https://doi.org/10.1016/j.tips.2014.11.001" target="_blank">GPCRdb generic numbering system</a> of GPCRs, SH2db assigns generic numbers to the SH2 domains based on a structure based sequence alignment where residues aligning in 3D space get the same generic number assigned. We identified 6 &beta;-strands and 2+1 &alpha;-helices (where the plus one helix is only present in STAT proteins) for which we could assign generic numbers to. In addition, we gave numbers to two Sheinerman residues that are located in the bBbC turn. For each segment, we identified the most conserved position between all human SH2 domains and assigned the x50 number to it. Residues on either side of the x50 position that belong to the same segment got sequentially numbered in a decreasing and increasing order, respectively. One exception is the position labeled bDx521 only present in STAT proteins. This residue does not have a structurally corresponding residue in the other proteins as it protrudes in between positions bDx52 and bDx53 similarily like bulged residues in GPCRs. Thus, we followed the numbering of bulges in GPCRs for this particular case. The segment ends where determined based on the manual observation of the backbone hydrogen-bond patterns in the available structures.</p>
+		</ul>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div><h4>How are the structural superpositions done?</h4></div>
+		<ul>
+			<li>We used the backbone coordinates of the 3 core &beta;-strands (bB, bC, bD) for the superpositioning. The rest of the segments are more flexible compared to this core region and thus their inclusion resulted in suboptimal overall superpositionings.</li>
+		</ul>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div><h4>Main features</h4></div>
+		<ul>
+			<li>SH2db</li>
+			<p>The landing page provides an overview of SH2db and the citation of the primary paper.</p>
+			<li>About</li>
+			<p>Additional information about the inspiration of SH2db as well as key structural elements of the SH2 domain to aid user analysis.</p>
+			<li>Search Page</li>
+			<p>The search page provides a comphrensive alignment of all human SH2 domains. The key structural elements are highlighted, and specific proteins or residues can be iteratively filtered. The alignment is color coded based on the amino acid side chain polarity, and selected alignment, structures, or Pymol files can be dowloaded as needed.</p>
+			<li>Browse</li>
+			<p>This page provides an alternative filtering approach to observe SH2 domains based on protein family, gene name, or UniProt ID.</p>
+			<li>Charts</li>
+			<p>Collated ’ready-to-use’ information on features/statistics of the SH2 domain protein family. </p>
+		</ul>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div><h4>Example cases</h4></div>
+		<ul>
+			<li>Look up structures for a specific SH2 domain</li>
+			<p>The SH2 domain for a known protein can be identified from the ’Browse’ page, either by entering the UniProt ID or gene name. All available structures (solved or predicted) will be displayed. Selecting the hyperlinked PDB will display the sequence as well as alignments, structures, and Pymol sessions for download.</p>
+			<img src="/static/home/images/example1.png" style="padding-bottom:30px;">
+			<li>Export pre-aligned structures of multiple SH2 domains into a Pymol session</li>
+			<p>From the Search page, toggle the ’Structures’ tab to ’on’. This will display all protien structures, and proteins can be filtered and selected in different approaches, such as through clicking the dropdown menu in the Protein column. Once selected, the alignments, structures, or Pymol sessions can be downloaded. Selecting residues with the checkboxes in the top row will highlight the residues as sticks in the resulting pymol session. Selecting the entries with the Uniprot IDs will default to exporting the corresponding AlphaFold models, when submitting structure-based download queries (pdb, or pymol session).</p>
+			<img src="/static/home/images/example2.png" style="padding-bottom:30px;">
+			<li>Explore functional relevance of SH2 domain mutations</li>
+			<p>Identify the residue of interest in the SH2 domain, and scroll to the residue in the Search page. Filter for the mutation or new residue to examine other SH2 domains with that mutation, or select amino acids with similar polarity. Download the structures to examine the effects or explore the reference for functional characteristics of the SH2 domain.</p>
+			<img src="/static/home/images/example3.png">
+		</ul>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div><h4>Architecture and source code</h4></div>
+		<ul>
+			<li>SH2db is built with the python based <a href="https://www.djangoproject.com/" target="_blank">Django</a> web framework using the PostgreSQL relational database.</li>
+			<li>All our source code is open source and can be found on GitHub:</li>
+			<object type="image/svg+xml" data="https://gh-card.dev/repos/keserulab/sh2db.svg?link_target=_blank"></object>
+		</ul>
+	</div>
+</div>
+<div class="row" style="padding-bottom:20px;">
+	<div class="col-md-12">
+		<div><h4>Browser compatibility</h4></div>
+		<table id="browser_compatibility">
+			<thead>
+				<tr>
+					<td>OS</td>
+					<td><img src="https://www.w3schools.com/images/compatible_chrome.png"></td>
+					<td><img src="https://www.w3schools.com/images/compatible_firefox.png"></td>
+					<td><img src="https://www.w3schools.com/images/compatible_edge.png"></td>
+					<td><img src="https://www.w3schools.com/images/compatible_safari.png"></td>
+					<td><img src="https://www.w3schools.com/images/compatible_opera.png"></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>macOS</td>
+					<td><span>&#10003;</span></td>
+					<td><span>&#10003;</span></td>
+					<td>not tested</td>
+					<td><span>&#10003;</span></td>
+					<td>not tested</td>
+				</tr>
+				<tr>
+					<td>Windows</td>
+					<td><span>&#10003;</span></td>
+					<td><span>&#10003;</span></td>
+					<td><span>&#10003;</span></td>
+					<td>not tested</td>
+					<td>not tested</td>
+				</tr>
+				<tr>
+					<td>Linux</td>
+					<td><span>&#10003;</span></td>
+					<td><span>&#10003;</span></td>
+					<td><span>&#10003;</span></td>
+					<td><span>&#10003;</span></td>
+					<td>not tested</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div><h4>Additional information</h4></div>
+		<ul>
+			<li>Liu paper (original starting point of the master alignment and functional grouping): Liu,B.A., Jablonowski,K., Raina,M., Arcé,M., Pawson,T. and Nash,P.D. (2006) The Human and Mouse Complement of SH2 Domain Proteins—Establishing the Boundaries of Phosphotyrosine Signaling. <a href="https://doi.org/10.1016/j.molcel.2006.06.001" target="_blank">Mol. Cell, 22, 851–868.</a></li>
+		</ul>
+	<div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div><h4>Contact us</h4></div>
+		<ul>
+			<li>You can contact us with any questions or suggestions regarding SH2db at sh2db
+        <img align="bottom" width="13" height="15" alt=""  style="border-width: 0px;" src="{% static 'home/images/kukac.png' %}">ttk
+        <img align="bottom" width="3" height="15" alt=""  style="border-width: 0px;"src="{% static 'home/images/potty2.png' %}">hu</li>
+		</ul>
+	</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+	document.getElementById("navbar.documentation").classList.add('active');
+</script>
+{% endblock %}

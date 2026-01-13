@@ -1,0 +1,61 @@
+{% extends "./navbar.html" %}
+{% load static %}
+
+{% block title %}pKahub - a web resource for pKa datasets{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <h2>pKahub - a web resource for pKa datasets</h2>
+</div>
+<!-- Left column -->
+<div class="row">
+	<div class="col-sm-12 col-md-6" style="padding-top:10px;">
+        <p style='text-align:justify;'>
+        Many molecules undergo spontaneous ionization in aqueous (or more generally, protic) media, 
+        which is quantified by the reaction equilibrium constant of proton dissociation or uptake, following 
+        the Bro̷nsted-Lowry acid-base theory.
+        By convention, pKa, the negative logarithm of proton dissociation is used most widely for downstream applications,
+        particularly in the fields of medicinal chemistry and drug discovery. 
+        Ionization states can have a drastic effect on physicochemical properties such as solvation, lipophilicity, membrane permeability and supramolecular interactions, 
+        all of them being crucially important aspects of drug affinity and safety. 
+        Enumerating ionized states for small molecules is especially important for structure-based molecular modelling and virtual screening workflows, as  
+        the protonation state of the ligand greatly affects the type and strength of secondary interaction with protein binding sites. 
+        </p>
+        <br>
+        <p style='text-align:justify;'>
+            pKahub is a convenient starting point for viewing and downloading charge state-annotated pKa data, providing access 
+            to the largest collection of public pKa datasets, to date. You can browse individual <a href="/molecule">molecules</a> 
+            or <a href="/datasets">datasets</a> and download the relevant data in several formats.
+        </p>
+        <p>
+            Read more about pKa and charge state transitions in general, as well as about our methodology for 
+            assigning and annotating pKa values to charge state transitions in the <a href="/about">About</a> page.
+        </p>
+        <br>
+        <p>
+            If you use pKahub in your work, please cite our primary paper: <a><i>To be published</i></a>
+        </p>
+        <p>
+        <a href="http://medchem.ttk.hu/" target="_blank">
+            <img src="{% static 'home/images/medchem.png' %}" height="50" alt="img" style="display:inline;"></img>
+        </a>
+        <a href="http://www.ttk.hu/en/" target="_blank">
+            <img src="{% static 'home/images/ttk.png' %}" height="50" alt="img" style="display:inline;"></img>
+        </a>
+        </p>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+        <img src="{% static 'home/images/indeximg.png' %}" alt="img" style="max-width: 100%"></img>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+	document.getElementById("navbar").classList.add('active');
+</script>
+{% endblock %}

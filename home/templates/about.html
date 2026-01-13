@@ -1,0 +1,102 @@
+{% extends "./navbar.html" %}
+{% load static %}
+
+{% block title %}pKahub - About{% endblock %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-sm-12 col-md-6">
+	
+    <p>
+        A typical pKa determination involves titrating the solution of the molecule across a defined pH range, while continuously 
+        monitoring changes in a suitable physicochemical signal, most commonly via potentiometric or spectrophotometric measurements. 
+        In this setting, the measurement yields only a sequence of apparent transition values consistent with the measured pH range, 
+        but it does not directly identify the specific protonation states involved in each transition.
+    </p>
+    <p>
+        By contrast, even among the practitioners of relevant fields such as medicinal chemistry, biochemistry, and pharmaceutical sciences,
+         there is often a limited awareness of the distinction between microscopic and macroscopic pKa values. Microscopic pKa values refer to 
+         the dissociation constants associated with specific protonation sites on a molecule, while macroscopic pKa values represent the overall 
+         protonation events between two charge states (such as -1 and 0), without specifying individual sites. This can lead to 
+         serious misconceptions, particularly in the case of multiprotic molecules. Importantly, a single charge state 
+         might exist as an equilibrium ensemble of microstates, making pKa values difficult to interpret, as experimental measurements 
+         typically yield macroscopic pKa values, while popular property predictor software usually calculate microscopic pKa values by default.
+    </p>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+        <img src="{% static 'home/images/aboutensemble.png' %}" alt="img" style="max-width: 100%"></img>
+    </div>
+ 
+
+</div>
+
+<div class="row">
+   <div class="col-sm-12 col-md-6">
+
+    <p>
+        Assigning specific microscopic states to experimentally derived macroscopic constants is generally not straightforward, especially by experiment. 
+        A practical route to a more detailed description of the underlying transitions is therefore to align the experimental values with computationally predicted dissociation constants. 
+        Here, we aim to provide the community with the largest collection of experimentally determined macroscopic pKa values, 
+        with detailed information on the associated charge state transitions, to facilitate the development and benchmarking of pKa prediction methods, 
+        as well as any other downstream applications.
+    </p>
+
+    <p>
+        Here, charge state transition assignment was carried out for every experimental pKa value by matching them to calculated macroscopic pKa values by <a href="https://www.schrodinger.com/platform/products/epik/", target="_blank">Epik</a>. 
+        We used an order-preserving matching algorithm to pair experimental and predicted pKa values, minimizing the sum of absolute differences between them. 
+        The results can be browsed by individual <a href="/molecule">molecules</a> 
+            or <a href="/datasets">datasets</a> or downloaded in bulk.
+    </p>
+
+    <br>
+    <p>
+        If you use pKahub in your work, please cite our primary paper: <a><i>To be published</i></a>
+    </p>
+    
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+        <img src="{% static 'home/images/assignment_edited.png' %}" alt="img" style="max-width: 100%"></img>
+    </div>
+
+</div>
+
+<br><br><br>
+
+<div class="row">
+	<div class="col-md-12">
+	
+    <p>pKahub is an open-source project, maintained by the <a href="http://medchem.ttk.hu/" target="_blank">Medicinal Chemistry Research Group</a> 
+        (<a href="https://twitter.com/keserulab" target="_blank">@keserulab</a>) in Budapest, Hungary.
+    </p>
+    <p>
+        You can contribute to the project via GitHub:
+    </p>
+    <object type="image/svg+xml" data="https://gh-card.dev/repos/keserulab/pkahub.svg?link_target=_blank"></object>
+
+    <br><br>
+    <p>
+        You can contact us with any questions or suggestions regarding pKahub at pkahub
+        <img align="bottom" width="13" height="15" alt=""  style="border-width: 0px;" src="{% static 'home/images/kukac.png' %}">ttk
+        <img align="bottom" width="3" height="15" alt=""  style="border-width: 0px;"src="{% static 'home/images/potty2.png' %}">hu</p>
+    </p>
+	
+
+    <a href="http://medchem.ttk.hu/" target="_blank">
+        <img src="{% static 'home/images/medchem.png' %}" height="50" alt="img" style="display:inline;"></img>
+    </a>
+    <a href="http://www.ttk.hu/en/" target="_blank">
+        <img src="{% static 'home/images/ttk.png' %}" height="50" alt="img" style="display:inline;"></img>
+    </a>
+    
+	</div>
+ </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+	document.getElementById("navbar.about").classList.add('active');
+</script>
+{% endblock %}

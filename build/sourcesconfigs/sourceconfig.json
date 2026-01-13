@@ -1,0 +1,145 @@
+[
+    {
+        "name": "Settimo et al.(2014)", 
+        "idname": "Settimo_et._al.(2014)", 
+        "type": "article", 
+        "citation": "Luca Settimo, Krista Bellman, Ronald M A Knegtel Comparison of the accuracy of experimental and predicted pKa values of basic and acidic compounds Pharm Res 31, 1082–1095 (2014). doi:10.1007/s11095-013-1232-z", 
+        "doi": "10.1007/s11095-013-1232-z", 
+        "url": "https://link.springer.com/article/10.1007/s11095-013-1232-z"
+    },
+    {
+        "name": "Baltruschat et al.(2020)",
+        "idname": "Baltruschat_et._al.(2020)",
+        "type": "article", 
+        "citation": "Marcel Baltruschat, Paul Czodrowski Machine learning meets pKa F1000Research 2020, 9(Chem Inf Sci):113 doi:10.12688/f1000research.22090.2", 
+        "doi": "10.12688/f1000research.22090.2", 
+        "url": "https://f1000research.com/articles/9-113/v2"
+    },
+    {
+        "name": "IUPAC digitized pKa dataset Github",
+        "idname": "IUPAC_digitized_pKa_github_repo",
+        "type": "weblink", 
+        "citation": "https://github.com/IUPAC/Dissociation-Constants",
+        "url": "https://github.com/IUPAC/Dissociation-Constants"
+    },
+    {
+        "name": "IUPAC digitized pKa dataset Zenodo",
+        "idname": "IUPAC_digitized_pKa_zenodo",
+        "type": "weblink", 
+        "citation": "https://doi.org/10.5281/zenodo.7236452",
+        "url": "https://doi.org/10.5281/zenodo.7236452"
+    },
+    {
+        "name": "Jensen_et al.(2017)", 
+        "idname": "Jensen_et._al.(2017)", 
+        "type": "article", 
+        "citation": "Jan H Jensen, Christopher J Swain, Lars Olsen Prediction of pKa Values for Druglike Molecules Using Semiempirical Quantum Chemical Methods J Phys Chem A. 2017 Jan 26;121(3):699-707. doi: 10.1021/acs.jpca.6b10990", 
+        "doi": "10.1021/acs.jpca.6b10990", 
+        "url": "https://pubs.acs.org/doi/abs/10.1021/acs.jpca.6b10990"
+    },
+    {
+        "name": "Hunt_et al.(2020)", 
+        "idname": "Hunt_et._al.(2020)", 
+        "type": "article",
+        "citation": "Peter Hunt, Layla Hosseini-Gerami, Tomas Chrien, Jeffrey Plante, David J Ponting, Matthew Segall Predicting pKa Using a Combination of Semi-Empirical Quantum Mechanics and Radial Basis Function Methods J Chem Inf Model. 2020 Jun 22;60(6):2989-2997. doi: 10.1021/acs.jcim.0c00105",
+        "doi": "10.1021/acs.jcim.0c00105",
+        "url": "https://pubs.acs.org/doi/10.1021/acs.jcim.0c00105"
+    },
+    {
+        "name": "Datawarrior website",
+        "idname": "Datawarrior_website",
+        "type": "weblink",
+        "citation": "https://openmolecules.org/datawarrior/",
+        "url": "https://openmolecules.org/datawarrior/"
+    },
+    {
+        "name": "Sander et al.(2015)",
+        "idname": "Datawarrior_article(2015)",
+        "type": "article",
+        "citation": "Thomas Sander, Joel Freyss, Modest von Korff, Christian Rufener DataWarrior: An Open-Source Program For Chemistry Aware Data Visualization And Analysis J Chem Inf Model. 2015 Sep 28;55(2):460-73. https://doi.org/10.1021/ci500588j",
+        "doi": "10.1021/ci500588j",
+        "url": "https://pubs.acs.org/doi/10.1021/ci500588j"
+    },
+    {
+        "name": "Manchester et al.(2010)",
+        "idname": "Manchester_et._al.(2010)",
+        "type": "article",
+        "citation": "John Manchester, Grant Walkup, Olga Rivin, Zhiping You Evaluation of pKa estimation methods on 211 druglike compounds J Chem Inf Model. 2010 Apr 26;50(4):565-71. doi: 10.1021/ci100019p",
+        "doi": "10.1021/ci100019p",
+        "url": "https://pubs.acs.org/doi/10.1021/ci100019p"
+    },
+    {
+        "name": "Caine et al.(2020)",
+        "idname": "Caine_et._al.(2020)",
+        "type": "article",
+        "citation": "Caine, B.A., Bronzato, M., Fraser, T. et al. Aqueous pKa prediction for tautomerizable compounds using equilibrium bond lengths. Commun Chem 3, 21 (2020). https://doi.org/10.1038/s42004-020-0264-7",
+        "doi": "10.1038/s42004-020-0264-7",
+        "url": "https://www.nature.com/articles/s42004-020-0264-7"
+    },
+    {
+        "name": "An et al.(2024)",
+        "idname": "An_et._al.(2024)",
+        "type": "article",
+        "citation": "Hongle An, Xuyang Liu, Wensheng Cai, and Xueguang Shao AttenGpKa: A Universal Predictor of Solvation Acidity Using Graph Neural Network and Molecular Topology Journal of Chemical Information and Modeling 2024 64 (14), 5480-5491 DOI: 10.1021/acs.jcim.4c00449",
+        "doi": "10.1021/acs.jcim.4c00449",
+        "url": "https://pubs.acs.org/doi/10.1021/acs.jcim.4c00449"
+    },
+    {
+        "name": "OCHEM website",
+        "idname": "ochem_website",
+        "type": "weblink",
+        "citation": "https://ochem.eu/home/show.do",
+        "url": "https://ochem.eu/home/show.do"
+    },
+    {
+        "name": "Sushko et al.(2011)",
+        "idname": "Sushko_et._al.(2011)",
+        "type": "article",
+        "citation": "Sushko, I., Novotarskyi, S., Körner, R. et al. Online chemical modeling environment (OCHEM): web platform for data storage, model development and publishing of chemical information. J Comput Aided Mol Des 25, 533–554 (2011). https://doi.org/10.1007/s10822-011-9440-2",
+        "doi": "10.1007/s10822-011-9440-2",
+        "url": "https://link.springer.com/article/10.1007/s10822-011-9440-2"
+    },
+    {
+        "name": "QSARToolbox website",
+        "idname": "QSARToolbox_website",
+        "type": "weblink",
+        "citation": "https://qsartoolbox.org/",
+        "url": "https://qsartoolbox.org/"
+    },
+    {
+        "name": "Yu et al.(2010)",
+        "idname": "Yu_et._al.(2010)",
+        "type": "article",
+        "citation": "Haiying Yu, Ralph Kühne, Ralf-Uwe Ebert, Gerrit Schüürmann Comparative Analysis of QSAR Models for Predicting pKa of Organic Oxygen Acids and Nitrogen Bases from Molecular Structure J Chem Inf Model. 2010 Nov 22;50(11):1949-60. doi: 10.1021/ci100306k",
+        "doi": "10.1021/ci100306k",
+        "url": "https://pubs.acs.org/doi/10.1021/ci100306k"
+    },
+    {
+        "name": "SAMPL6 Github repository",
+        "idname": "SAMPL6_github_repo",
+        "type": "weblink",
+        "citation": "https://github.com/samplchallenges/SAMPL6",
+        "url": "https://github.com/samplchallenges/SAMPL6"
+    },
+    {
+        "name": "SAMPL7 Github repository",
+        "idname": "SAMPL7_github_repo",
+        "type": "weblink",
+        "citation": "https://github.com/samplchallenges/SAMPL7",
+        "url": "https://github.com/samplchallenges/SAMPL7"
+    },
+    {
+        "name": "SAMPL8 Github repository",
+        "idname": "SAMPL8_github_repo",
+        "type": "weblink",
+        "citation": "https://github.com/samplchallenges/SAMPL8",
+        "url": "https://github.com/samplchallenges/SAMPL8"
+    },
+    {
+        "name": "euroSAMPL1 Gitlab repository",
+        "idname": "euroSAMPL1_gitlab_repo",
+        "type": "weblink",
+        "citation": "https://gitlab.tu-dortmund.de/kast_ccb/eurosampl/challenge",
+        "url": "https://gitlab.tu-dortmund.de/kast_ccb/eurosampl/challenge"
+    }
+]

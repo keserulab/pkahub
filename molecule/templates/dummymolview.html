@@ -1,0 +1,159 @@
+{% extends "./navbar.html" %}
+{% load static %}
+
+{% block head %}
+<!-- MolVis CSS -->
+<link rel="stylesheet" href="{% static 'home/css/molvis.css' %}" type="text/css" />
+
+<style>
+/* Page-specific styling */
+.page-header {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #337ab7;
+}
+
+.page-header h2 {
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+.molecule-info {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.molecule-info p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.molecule-info strong {
+    color: #555;
+    min-width: 100px;
+    display: inline-block;
+}
+
+.molvis-section {
+    margin-top: 30px;
+}
+
+.molvis-section h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 16px;
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.back-link:hover {
+    background-color: #5a6268;
+    color: white;
+    text-decoration: none;
+}
+
+.test-note {
+    background-color: #fff3cd;
+    border: 1px solid #ffc107;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    color: #856404;
+}
+
+.test-note strong {
+    color: #856404;
+}
+</style>
+{% endblock %}
+
+{% block title %}MolVis Test - {{ molecule.molid }}{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <h2>MolVis Component Test View</h2>
+    <div class="test-note">
+        <strong>Note:</strong> This is a test page for the MolVis JavaScript component.
+        It displays the same molecule data using the new MolVis visualization instead of the traditional table layout.
+    </div>
+</div>
+
+<!-- Molecule Information -->
+<div class="molecule-info">
+    <p><strong>Molecule ID:</strong> {{ molecule.molid }}</p>
+    <p><strong>SMILES:</strong> {{ molecule.smiles }}</p>
+    <p><strong>InChI:</strong> {{ molecule.inchi }}</p>
+</div>
+
+<!-- MolVis Visualization Section -->
+<div class="molvis-section">
+    <h3>Charge States and Microspecies Visualization</h3>
+
+    <!-- MolVis Container -->
+    <div id="molvis-container"></div>
+</div>
+
+<!-- Back to regular view link -->
+<a href="/molecule/{{ molecule.molid }}/" class="back-link">← Back to Regular View</a>
+
+{% endblock %}
+
+{% block scripts %}
+<!-- MolVis JavaScript -->
+<script src="{% static 'home/js/molvis.js' %}"></script>
+
+<script>
+// Parse the MolVis input data
+const molvisData = {{ molvis_input_json|safe }};
+
+// Initialize MolVis component
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Initializing MolVis with data:', molvisData);
+    // Debug: Check image paths
+    if (molvisData && molvisData.charge_states) {
+        console.log('=== Image Path Debug ===');
+        molvisData.charge_states.forEach(cs => {
+            console.log(`Charge ${cs.charge}:`);
+            cs.microspecies.forEach(ms => {
+                console.log(`  ID: ${ms.id}, Image: "${ms.image_path}"`);
+            });
+        });
+    }
+
+    if (!molvisData) {
+        console.error('No MolVis data available');
+        document.getElementById('molvis-container').innerHTML =
+            '<div class="molvis-error">' +
+            '<div class="molvis-error-title">Error</div>' +
+            '<div class="molvis-error-message">No visualization data available for this molecule.</div>' +
+            '</div>';
+        return;
+    }
+
+    try {
+        // Create MolVis instance
+        const molvis = new MolVis('molvis-container', molvisData);
+        console.log('MolVis initialized successfully');
+    } catch (error) {
+        console.error('Error initializing MolVis:', error);
+        document.getElementById('molvis-container').innerHTML =
+            '<div class="molvis-error">' +
+            '<div class="molvis-error-title">Error</div>' +
+            '<div class="molvis-error-message">Failed to initialize visualization: ' + error.message + '</div>' +
+            '</div>';
+    }
+});
+</script>
+{% endblock %}

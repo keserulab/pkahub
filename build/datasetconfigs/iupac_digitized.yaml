@@ -1,0 +1,5 @@
+name: IUPAC digitized pKa
+idname: IUPAC_digitized
+priority: 0
+sourcename: IUPAC_digitized_pKa_zenodo
+license: CC-BY-4.0

@@ -1,0 +1,241 @@
+{% extends "./navbar.html" %}
+{% load static %}
+
+{% block head %}
+
+<!-- MolVis CSS -->
+<link rel="stylesheet" href="{% static 'home/css/molvis.css' %}" type="text/css" />
+
+<style>
+/* Molecule info panel styling */
+.molecule-info {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.molecule-info p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.molecule-info strong {
+    color: #555;
+    min-width: 100px;
+    display: inline-block;
+}
+
+.molvis-section {
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.molvis-section h3 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+/* pKa datapoints table styling */
+table.pka-table {
+    width: 100%;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    margin-top: 10px;
+}
+
+table.pka-table thead th {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+}
+
+table.pka-table tbody td {
+    border: 1px solid #ddd;
+    padding: 8px !important;
+    vertical-align: middle !important;
+}
+
+table.pka-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table.pka-table tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Download buttons styling */
+.download-section {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.download-button {
+    background-color: #5cb85c;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.download-button:hover {
+    background-color: #4cae4c;
+    color: white;
+    text-decoration: none;
+}
+
+.download-json {
+    background-color: #337ab7;
+}
+
+.download-json:hover {
+    background-color: #286090;
+}
+
+.download-smiles {
+    background-color: #f0ad4e;
+}
+
+.download-smiles:hover {
+    background-color: #ec971f;
+}
+
+.download-sdf {
+    background-color: #5bc0de;
+}
+
+.download-sdf:hover {
+    background-color: #46b8da;
+}
+
+.download-microsmiles {
+    background-color: #d9534f;
+}
+
+.download-microsmiles:hover {
+    background-color: #c9302c;
+}
+
+.download-microsdf {
+    background-color: #5e35b1;
+}
+
+.download-microsdf:hover {
+    background-color: #4527a0;
+}
+</style>
+
+{% endblock %}
+
+{% block title %}pKahub - {{molecule.molid}} {% endblock %}
+
+
+{% block content %}
+
+<!-- Molecule Information -->
+<div class="molecule-info">
+    <p><strong>Molecule ID:</strong> {{ molecule.molid }}</p>
+    <p><strong>SMILES:</strong> {{ molecule.smiles }}</p>
+    <p><strong>InChI:</strong> {{ molecule.inchi }}</p>
+</div>
+
+<!-- pKa Datapoints Table -->
+{% if pka_datapoints %}
+<div style="margin-bottom: 40px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <h3 style="margin: 0;">Experimental Macro pKa Values</h3>
+        <!-- Download Section -->
+        <div class="download-section" style="margin-bottom: 0;">
+            <span style="margin-right: 10px; font-weight: bold;">Download:</span>
+            <a href="/molecule/{{ molecule.molid }}/download/?format=tsv" class="download-button download-tsv">TSV</a>
+            <a href="/molecule/{{ molecule.molid }}/download/?format=json" class="download-button download-json">JSON</a>
+            <a href="/molecule/{{ molecule.molid }}/download/?format=smiles" class="download-button download-smiles">SMILES</a>
+            <a href="/molecule/{{ molecule.molid }}/download/?format=sdf" class="download-button download-sdf">SDF</a>
+        </div>
+    </div>
+    <table class="table pka-table">
+        <thead>
+            <tr>
+                <th>Macro pKa value</th>
+                <th>Dataset</th>
+                <th>Assigned charge state transition</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for datapoint in pka_datapoints %}
+            <tr>
+                <td>{{ datapoint.pka_value | floatformat:2 }}</td>
+                <td>{{ datapoint.dataset.name|default:"N/A" }}</td>
+                <td>{{ datapoint.pre_charge_macrostate.charge }} &raquo; {{ datapoint.post_charge_macrostate.charge }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Microspecies Download Section -->
+    <div style="display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-top: 15px;">
+        <span style="font-weight: bold;">Download Microspecies:</span>
+        <a href="/molecule/{{ molecule.molid }}/download/?format=microsmiles" class="download-button download-microsmiles">MICRO SMILES</a>
+        <a href="/molecule/{{ molecule.molid }}/download/?format=microsdf" class="download-button download-microsdf">MICRO SDF</a>
+    </div>
+</div>
+{% endif %}
+
+<!-- MolVis Visualization Section -->
+<div class="molvis-section">
+    <h3>Charge States and Microspecies Visualization</h3>
+
+    <!-- MolVis Container -->
+    <div id="molvis-container"></div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<!-- MolVis JavaScript -->
+<script src="{% static 'home/js/molvis.js' %}?v=2"></script>
+
+<script>
+// Parse the MolVis input data
+const molvisData = {{ molvis_input_json|safe }};
+
+// Initialize MolVis component
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Initializing MolVis with data:', molvisData);
+
+    if (!molvisData) {
+        console.error('No MolVis data available');
+        document.getElementById('molvis-container').innerHTML =
+            '<div class="molvis-error">' +
+            '<div class="molvis-error-title">Error</div>' +
+            '<div class="molvis-error-message">No visualization data available for this molecule.</div>' +
+            '</div>';
+        return;
+    }
+
+    try {
+        // Create MolVis instance
+        const molvis = new MolVis('molvis-container', molvisData);
+        console.log('MolVis initialized successfully');
+    } catch (error) {
+        console.error('Error initializing MolVis:', error);
+        document.getElementById('molvis-container').innerHTML =
+            '<div class="molvis-error">' +
+            '<div class="molvis-error-title">Error</div>' +
+            '<div class="molvis-error-message">Failed to initialize visualization: ' + error.message + '</div>' +
+            '</div>';
+    }
+});
+</script>
+{% endblock %}

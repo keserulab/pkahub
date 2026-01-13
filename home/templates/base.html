@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- html5  -->
+
+<head>
+
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+
+	<meta name="keywords" content="pKa, protonation, cheminformatics, database">
+	<meta name="description" content="Webpage of the pKahub websource of the Medicinal Chemistry Research Group at RCNS, Budapest, Hungary">
+	<meta name="copyright" content="(c) 2025 TTK">
+	<meta http-equiv="Content-Language" content="en-EN">
+	
+	<link rel="stylesheet" href="{% static 'home/css/jquery-ui.css' %}" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}" crossorigin="anonymous">
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'home/images/logo.png' %}">
+	
+	<script src="{% static 'home/js/jquery-3.1.1.min.js' %}" crossorigin="anonymous"></script>
+	<script src="{% static 'home/js/jquery-ui.js' %}" crossorigin="anonymous"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="{% static 'home/js/bootstrap.min.js' %}" crossorigin="anonymous"></script>
+	<script src="{% static 'home/js/pkahub.js' %}" crossorigin="anonymous"></script>
+	{% block head %}{% endblock %}
+
+
+  <title>{% block title %}{% endblock %}</title>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/index">
+          	<img src="{% static 'home/images/logo.png' %}" width="35" alt="img" style="display:inline;"></img>
+          	<span style="display:inline;">pKahub</span>
+          </a>
+        </div>
+        <div id="navbar" class="navbar-collapse">
+          <ul class="nav navbar-nav">
+			{% block current-navbar %}{% endblock %}
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+	
+	<div class="container">
+		<div id="pkahub_alert_placeholder"></div>
+  {% block content %}{% endblock %}
+  
+	</div><!--/.container -->
+
+<footer class="footer" style="margin: 25px">
+      <div class="container">
+		<div class="row">
+		  <div class="col-md-12">
+			<!--/placeholder -->
+		  </div><!--/.column -->
+		</div><!--/.row -->
+      </div><!--/.container -->
+</footer>
+
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>
