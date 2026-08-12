@@ -27,5 +27,5 @@ We welcome community testing and feedback. To share observations about performan
   
 If you use pKahub in your research, please cite our paper:
 
-To be added
+Levente Sipos-Szabó, Dávid Bajusz, György T. Balogh, György M. Keserű; Benchmarking pKa Prediction Algorithms against an Extensive, Public Data Set. J. Chem. Inf. Model. 27 April 2026; 66 (8): 4607–4619. https://doi.org/10.1021/acs.jcim.6c00107
 
