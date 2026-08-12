@@ -1,4 +1,4 @@
-# <img height="35" alt="logo" src="https://github.com/user-attachments/assets/b16786e3-4bb5-4b37-842d-b3f1806bb6ba" /> pKahub
+# <img height="35" alt="logo" src="static/home/images/logo.png" /> pKahub
 Welcome to pKahub, the largest online collection of experimental pKa data for small molecules, 
 systematically annotated with macroscopic charge state transitions.
 
@@ -28,4 +28,3 @@ We welcome community testing and feedback. To share observations about performan
 If you use pKahub in your research, please cite our paper:
 
 Levente Sipos-Szabó, Dávid Bajusz, György T. Balogh, György M. Keserű; Benchmarking pKa Prediction Algorithms against an Extensive, Public Data Set. J. Chem. Inf. Model. 27 April 2026; 66 (8): 4607–4619. https://doi.org/10.1021/acs.jcim.6c00107
-
